@@ -17,6 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($userEmail === $email && $userPassword === $password) {
       $_SESSION['loggedIn'] = true;
+      $_SESSION['userName'] = $userName;
+      $_SESSION['userPhone'] = $userPhone;
+      $_SESSION['userGender'] = $userGender;
+      $_SESSION['userEmail'] = $userEmail;
       header("Location: index.php");
       exit();
     }
@@ -83,7 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
         </div>
         <div class="flex flex-col justify-center items-center w-1/2">
-          <?php if (isset($error)) echo "<p class='p-3 bg-red-500 text-white rounded-xl'>$error</p>"; ?>
+          <?php if (isset($_GET['success'])) echo "<p class='p-3 mb-3 bg-green-500 text-white'>Registration successful! Please log in.</p>"; ?>
+          <?php if (isset($error)) echo "<p class='p-3 mb-3 bg-red-500 text-white'>$error</p>"; ?>
           <form class="w-1/2" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <label for="email">Email</label><br />
             <input

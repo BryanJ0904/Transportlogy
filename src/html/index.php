@@ -1,11 +1,15 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="../css/index.css" rel="stylesheet" />
-    <link href="../css/homepage.css" rel="stylesheet" />
+    <link href="../css/index.css?v=1" rel="stylesheet" />
+    <link href="../css/homepage.css?v=1" rel="stylesheet" />
   </head>
   <body>
     <div
@@ -31,18 +35,27 @@
         </div>
       </div>
       <div class="flex justify-evenly items-center w-1/6 h-3/4 p-3">
-        <a
-          href="register.php"
-          class="inline-flex items-center justify-center bg-gray-500 w-1/3 h-full rounded-lg text-white"
-        >
-          Register
-        </a>
-        <a
-          href="login.php"
-          class="inline-flex items-center justify-center bg-gray-500 w-1/3 h-full rounded-lg text-white"
-        >
-          Login
-        </a>
+        <?php if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']): ?>
+          <a
+            href="logout.php"
+            class="inline-flex items-center justify-center bg-gray-500 w-1/3 h-full rounded-lg text-white"
+          >
+            Logout
+          </a>
+        <?php else: ?>
+          <a
+            href="register.php"
+            class="inline-flex items-center justify-center bg-gray-500 w-1/3 h-full rounded-lg text-white"
+          >
+            Register
+          </a>
+          <a
+            href="login.php"
+            class="inline-flex items-center justify-center bg-gray-500 w-1/3 h-full rounded-lg text-white"
+          >
+            Login
+          </a>
+        <?php endif; ?>
       </div>
     </div>
     <div
@@ -60,39 +73,12 @@
           Transportlogy.
         </div>
         <div class="w-full text-center">
-          <button class="w-1/4 p-3 bg-yellow-100 text-blue rounded-lg">
+          <a href="offers.php" class="w-1/4 p-3 bg-yellow-100 text-blue rounded-lg">
             See Offers
-          </button>
+          </a>
         </div>
       </div>
     </div>
-    <!-- <div id="background-gradient2">
-      <div class="relative w-3/4 h-fit mb-32 mx-auto z-20">
-        <h1 class="text-5xl text-center lg:text-start">BEST DEAL</h1>
-        <br />
-        <div
-          id="banner-card"
-          class="flex flex-col lg:flex-row justify-between items-center w-full h-fit px-16 py-10 bg-purple-200 rounded-3xl"
-        >
-          <div
-            class="flex flex-col justify-between w-full text-center lg:text-start lg:w-1/2 min-h-64 lg:min-h-52"
-          >
-            <div class="text-4xl"><h1>12 Months Pass</h1></div>
-            <div>
-              Get the most out of Tangerang with unlimited rides for a whole
-              year! This pass is the most cost-effective option for frequent
-              riders and those who truly want to immerse themselves in the city.
-              Enjoy the ultimate freedom and explore Tangerang at your own pace.
-            </div>
-            <div>More Info</div>
-          </div>
-          <div
-            class="flex items-center justify-center lg:justify-end w-full lg:w-1/3 min-h-32"
-          >
-            <h1 class="text-5xl text-white">Rp. 6.599.999</h1>
-          </div>
-        </div>
-      </div> -->
       <div id="background-gradient2">
       <div class="relative w-3/4 h-fit mb-32 mx-auto z-20">
         <h1 class="text-5xl text-center lg:text-start">BEST DEAL</h1>
@@ -117,9 +103,7 @@
               <h2>More Info</h2>
             </div>
           </div>
-          </div>
         </div>
-      </div>
       <div class="relative w-3/4 h-fit mb-32 mx-auto">
         <h1 class="relative text-5xl text-center z-20">OFFERS</h1>
         <br />
@@ -128,7 +112,8 @@
         >
           <div
             id="card1"
-            class="flex flex-col justify-between items-center text-center w-3/4 xl:w-[30%] h-[500px] px-8 py-5 mb-16 xl:mb-0 rounded-3xl shadow-2xl z-20"
+            class="card flex flex-col justify-between items-center text-center w-3/4 xl:w-[30%] h-[500px] px-8 py-5 mb-16 xl:mb-0 rounded-3xl shadow-2xl z-20"
+            onClick="redirectPage(1)"
           >
             <div class="flex flex-col justify-between h-3/4">
               <div class="flex justify-center w-full">
@@ -151,7 +136,8 @@
           </div>
           <div
             id="card2"
-            class="flex flex-col justify-between items-center text-center w-3/4 xl:w-[30%] h-[500px] px-8 py-5 mb-16 xl:mb-0 rounded-3xl shadow-2xl z-20"
+            class="card flex flex-col justify-between items-center text-center w-3/4 xl:w-[30%] h-[500px] px-8 py-5 mb-16 xl:mb-0 rounded-3xl shadow-2xl z-20"
+            onClick="redirectPage(2)"
           >
             <div class="flex flex-col justify-between h-3/4">
               <div class="flex justify-center w-full">
@@ -174,7 +160,8 @@
           </div>
           <div
             id="card3"
-            class="flex flex-col justify-between items-center text-center w-3/4 xl:w-[30%] h-[500px] px-8 py-5 mb-16 xl:mb-0 rounded-3xl shadow-2xl z-20"
+            class="card flex flex-col justify-between items-center text-center w-3/4 xl:w-[30%] h-[500px] px-8 py-5 mb-16 xl:mb-0 rounded-3xl shadow-2xl z-20"
+            onClick="redirectPage(3)"
           >
             <div class="flex flex-col justify-between h-3/4">
               <div class="flex justify-center w-full">
@@ -257,4 +244,25 @@
       </div>
     </div>
   </body>
+  <script>
+    function redirectPage(pageIndex){
+      console.log('hi' + pageIndex);
+      switch(pageIndex){
+        case 1:
+          document.location.href = '1month.php';
+          break;
+        case 2:
+          document.location.href = '3months.php';
+          break;
+        case 3:
+          document.location.href = '6months.php';
+          break;
+        case 4:
+          document.location.href = '12months.php';
+          break;
+        default:
+          break;
+      }
+    }
+  </script>
 </html>

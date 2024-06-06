@@ -8,14 +8,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $userData = "$name#$phone#$gender#$email#$password\n";
 
-  $file = fopen('registered_users.txt', 'a');
-  fwrite($file, $userData);
-  fclose($file);
+  $error = '';
+  $file = file('registered_users.txt', FILE_IGNORE_NEW_LINES);
 
-  echo "Registration successful!";
+  foreach ($file as $line) {
+    $userDataArray = explode('#', $line);
+    $userName = $userDataArray[0];
+    $userPhone = $userDataArray[1];
+    $userGender = $userDataArray[2];
+    $userEmail = $userDataArray[3];
+    $userPassword = $userDataArray[4];
 
-  header("Location: login.php");
-  exit();
+    if ($userEmail === $email) {
+      $error = "Email is already registered.";
+    }
+  }
+    
+  if($error == ''){
+    $fileWrite = fopen('registered_users.txt', 'a');
+    fwrite($fileWrite, $userData);
+    fclose($fileWrite);
+    
+    $success = "Registration successful! Please log in.";
+    header("Location: login.php?success=" . urlencode($success));
+    exit();
+  }
 }
 ?>
 
@@ -78,6 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
         </div>
         <div class="flex flex-col justify-center items-center w-1/2">
+          <?php if (isset($error) && $error != '') echo "<p class='p-3 mb-3 bg-red-500 text-white  '>$error</p>"; ?>
           <form class="w-1/2" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <label for="name">Name</label><br />
             <input

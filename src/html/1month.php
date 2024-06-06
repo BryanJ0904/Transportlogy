@@ -64,30 +64,26 @@ session_start();
       <h1 class="text-5xl my-24">OFFER OVERVIEW</h1>
       <div class="flex justify-between min-h-96">
         <div class="flex flex-col w-1/2">
-          <h1 class="text-5xl mb-5">12 Months Pass</h1>
+          <h1 class="text-5xl mb-5">1 Month Pass</h1>
           <div class="mb-5">
-            Get the most out of Tangerang with unlimited rides for a whole year!
-            This pass is the most cost-effective option for frequent riders and
-            those who truly want to immerse themselves in the city. Enjoy the
-            ultimate freedom and explore Tangerang at your own pace.
+            Explore Tangerang for 30 days with the convenience of unlimited rides. 
+            This pass is perfect for visitors or those new to the city.
           </div>
           <h2 class="font-bold mb-5">Diawasi Oleh:</h2>
           <img class="h-12 w-fit" src="../img/ojk.png" />
         </div>
         <div class="flex flex-col w-1/2 text-end">
-          <div class="text-sm text-gray-400">Average 12 months price</div>
-          <div class="text-gray-400 mb-6">Rp. 7.899.000</div>
+          <div class="text-sm text-gray-400">Average 1 month price</div>
+          <div class="text-gray-400 mb-6">Rp. 899.000</div>
           <div class="">Our Price</div>
-          <h1 class="text-5xl my-4">Rp. 6.599.000</h1>
+          <h1 class="text-5xl my-4">Rp. 799.000,-</h1>
           <div class="text-sm font-bold">WHAT YOU GET</div>
-          <div class="text-sm">Free bus rides for 12 months</div>
-          <div class="text-sm">Free online transportation for 12 months</div>
-          <div class="text-sm">Free taxis for 12 months</div>
-          <div class="text-sm">Free train tickets for 12 months</div>
+          <div class="text-sm">Free bus rides for 1 month</div>
+          <div class="text-sm">Free train tickets for 1 month</div>
           <div class="flex justify-end my-4">
             <?php if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']): ?>
               <a
-                href="12months.confirmation.php"
+                href="1month.confirmation.php"
                 class="inline-flex justify-center w-1/3 p-3 text-3xl text-white font-bold bg-purple-950 rounded-xl"
               >
                 Buy Now
@@ -121,15 +117,6 @@ session_start();
           class="flex flex-col justify-between items-center w-1/2 lg:w-[30%] h-72 lg:h-64 rounded-xl px-8 py-5 mb-8 lg:mb-0 border-2"
         >
           <div class="flex flex-col justify-between items-center h-1/2">
-            <img class="w-fit h-16" src="../img/1.png" />
-            <h1 class="text-2xl font-bold">Month Pass</h1>
-          </div>
-          <h1 class="text-xl xl:text-3xl font-bold">Rp. 799.000,-</h1>
-        </div>
-        <div
-          class="flex flex-col justify-between items-center w-1/2 lg:w-[30%] h-72 lg:h-64 rounded-xl px-8 py-5 mb-8 lg:mb-0 border-2"
-        >
-          <div class="flex flex-col justify-between items-center h-1/2">
             <img class="w-fit h-16" src="../img/3.png" />
             <h1 class="text-2xl font-bold">Month Pass</h1>
           </div>
@@ -148,6 +135,18 @@ session_start();
           <div class="flex flex-col justify-between items-center h-1/4">
             <h2 class="text-sm text-gray-400 line-through">Rp. 4.799.000,-</h2>
             <h1 class="text-xl xl:text-3xl font-bold">Rp. 3.899.000,-</h1>
+          </div>
+        </div>
+        <div
+          class="flex flex-col justify-between items-center w-1/2 lg:w-[30%] h-72 lg:h-64 rounded-xl px-8 py-5 mb-8 lg:mb-0 border-2"
+        >
+          <div class="flex flex-col justify-between items-center h-1/2">
+            <img class="w-fit h-16" src="../img/12.png" />
+            <h1 class="text-2xl font-bold">Month Pass</h1>
+          </div>
+          <div class="flex flex-col justify-between items-center h-1/4">
+            <h2 class="text-sm text-gray-400 line-through">Rp. 7.899.000,-</h2>
+            <h1 class="text-xl xl:text-3xl font-bold">Rp. 6.599.000,-</h1>
           </div>
         </div>
       </div>

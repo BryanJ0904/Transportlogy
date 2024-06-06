@@ -40,6 +40,15 @@
   );
 }
 
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 #card1 {
   background-image: linear-gradient(to bottom right, #ffffff, #6b4710);
 }
